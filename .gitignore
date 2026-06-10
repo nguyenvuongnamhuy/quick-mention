@@ -1,0 +1,12 @@
+node_modules
+dist
+build
+
+*.log
+*.env
+*.key
+*.pem
+*.crx
+
+.DS_Store
+config.js
