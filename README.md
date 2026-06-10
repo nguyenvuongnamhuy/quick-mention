@@ -25,7 +25,8 @@ You have two options:
 1. Go to the **Releases** page of this repo
 2. Download the latest `quick-mention.crx`
 3. Open Chrome / Edge / Brave and go to `chrome://extensions/`
-4. Drag and drop the `.crx` file onto the page
+4. Enable **Developer mode** (top right)
+5. Drag and drop the `.crx` file onto the page
 
 ### Option 2 — Load unpacked (for development)
 
@@ -34,10 +35,14 @@ You have two options:
    git clone <this-repo-url>
    cd quick-mention
    ```
-2. Open Chrome / Edge / Brave and go to `chrome://extensions/`
-3. Enable **Developer mode** (top right)
-4. Click **Load unpacked**
-5. Select the `quick-mention` folder
+2. Create & edit config:
+   ```bash
+   cp config.example.js config.js
+   ```
+3. Open Chrome / Edge / Brave and go to `chrome://extensions/`
+4. Enable **Developer mode** (top right)
+5. Click **Load unpacked**
+6. Select the `quick-mention` folder
 
 ### 3. Configure the Google Sheet
 
@@ -65,7 +70,7 @@ The extension reads from a default Google Sheet ID in `config.js`. To use your o
 
 | Shortcut | Google User ID |
 |----------|----------------|
-| @dev | 123456789 (Huy)<br>987654321 (Duy) |
+| @dev | 123456789 (Jack)<br>987654321 (Justin) |
 | @qa | 111111111 (Jane)<br>222222222 (John) |
 
 ### Webhook sheet (gid=500084238)
