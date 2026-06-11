@@ -26,9 +26,11 @@ class WebhookClient {
 
     const tagsLabel = AppState.labels['tags'] || '*📋 Tags:*';
     const spacesLabel = AppState.labels['spaces'] || '*📋 Spaces:*';
+    const menuTag = AppState.labels['menu'] || '@menu';
 
     const lines = [];
     lines.push('*' + tagsLabel + '*');
+    lines.push(`  • ${menuTag}`);
     AppState.tagsList.forEach(t => lines.push(`  • ${t}`));
     lines.push('');
     lines.push('*' + spacesLabel + '*');
