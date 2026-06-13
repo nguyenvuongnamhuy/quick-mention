@@ -8,8 +8,8 @@ Chrome Extension (Manifest V3) that intercepts Enter/Send in Google Chat, detect
 
 ```
 Google Sheets (CSV export)
-  ├── Shortcut sheet (gid=0) → SheetLoader → AppState.shortcuts
-  ├── Webhook sheet  (gid=500084238) → WebhookSheetLoader → AppState.webhooks
+  ├── Shortcut sheet (gid=0) → ShortcutLoader → AppState.shortcuts
+  ├── Webhook sheet  (gid=500084238) → WebhookLoader → AppState.webhooks
   └── Label sheet    (gid=764047798) → LabelLoader → AppState.labels
                                             ↓
                                     AppState ready
@@ -25,8 +25,8 @@ User types message + presses Enter / clicks Send
 
 | Class | File | Role |
 |-------|------|------|
-| `SheetLoader` | `sheet-loader.js` | Parses Shortcut sheet (col A = shortcut, col B = user list) into `AppState.shortcuts` |
-| `WebhookSheetLoader` | `webhook-loader.js` | Parses Webhook sheet (col A = name, col B = space ID, col C = URL) into `AppState.webhooks` |
+| `ShortcutLoader` | `shortcut-loader.js` | Parses Shortcut sheet (col A = shortcut, col B = user list, col C = Enable checkbox) into `AppState.shortcuts`. Only enabled rows loaded. |
+| `WebhookLoader` | `webhook-loader.js` | Parses Webhook sheet (col A = name, col B = space ID, col C = URL) into `AppState.webhooks` |
 | `LabelLoader` | `label-loader.js` | Parses Label sheet (col A = name, col B = value) into `AppState.labels` |
 | `ChatDomSniffer` | `chat-dom.js` | Finds text, extracts space/thread context from DOM |
 | `WebhookClient` | `webhook.js` | Sends text messages to Google Chat webhook URL |

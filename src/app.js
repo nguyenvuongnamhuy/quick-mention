@@ -12,8 +12,8 @@
 // ============================================================
 class QuickMentionApp {
   constructor() {
-    this.shortcutLoader = new SheetLoader(SHEET_SHORTCUT_URL);
-    this.webhookLoader = new WebhookSheetLoader(SHEET_WEBHOOK_URL);
+    this.shortcutLoader = new ShortcutLoader(SHEET_SHORTCUT_URL);
+    this.webhookLoader = new WebhookLoader(SHEET_WEBHOOK_URL);
     this.labelLoader = new LabelLoader(SHEET_LABEL_URL);
 
     this._onKeyDown = this._onKeyDown.bind(this);

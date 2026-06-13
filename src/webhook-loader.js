@@ -5,7 +5,7 @@
 //  Column B: space ID
 //  Column C: webhook URL
 // ============================================================
-class WebhookSheetLoader {
+class WebhookLoader {
   constructor(url) {
     this.url = url;
     this.mapping = {}; // { spaceId: webhookUrl }

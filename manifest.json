@@ -12,7 +12,7 @@
       "js": [
         "src/csv-parser.js",
         "src/app-state.js",
-        "src/sheet-loader.js",
+        "src/shortcut-loader.js",
         "src/webhook-loader.js",
         "src/label-loader.js",
         "src/chat-dom.js",

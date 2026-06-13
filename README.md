@@ -99,7 +99,7 @@ src/
   chat-dom.js          # DOM interaction (find text, extract context)
   csv-parser.js        # Multi-line CSV parser
   label-loader.js      # Loads Label sheet data
-  sheet-loader.js      # Loads Shortcut sheet data
+  shortcut-loader.js   # Loads Shortcut sheet data
   webhook-loader.js    # Loads Webhook sheet data
   webhook.js           # Webhook client (send messages to Google Chat)
 ```
