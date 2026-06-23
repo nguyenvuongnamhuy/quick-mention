@@ -12,7 +12,7 @@ class ChatDomSniffer {
 
   /** Get text content from input element */
   static getText(el) {
-    return el?.textContent || '';
+    return el?.textContent || "";
   }
 
   /**
@@ -28,8 +28,21 @@ class ChatDomSniffer {
     const results = [];
 
     for (const [shortcut, members] of Object.entries(mapping)) {
-      if (text.includes(shortcut)) {
-        results.push({ shortcut, members });
+      let idx = 0;
+      while ((idx = text.indexOf(shortcut, idx)) !== -1) {
+        const charBefore = text[idx - 1];
+        const charAfter = text[idx + shortcut.length];
+
+        // Must be preceded by start-of-string or a non-word character,
+        // and followed by end-of-string or a non-word character.
+        const isWordStart = charBefore === undefined || /\W/.test(charBefore);
+        const isWordEnd = charAfter === undefined || /\W/.test(charAfter);
+
+        if (isWordStart && isWordEnd) {
+          results.push({ shortcut, members });
+          break;
+        }
+        idx++;
       }
     }
 
@@ -51,7 +64,7 @@ class ChatDomSniffer {
   static isSendButton(el) {
     if (!el) return null;
     return el.closest(
-      '[aria-label="Gửi tin nhắn"], [aria-label="Send message"], [aria-label="Send"]'
+      '[aria-label="Gửi tin nhắn"], [aria-label="Send message"], [aria-label="Send"]',
     );
   }
 
@@ -78,7 +91,10 @@ class ChatDomSniffer {
         for (const input of inputs) {
           let depth = 0;
           let p = input;
-          while (p && p !== el) { depth++; p = p.parentElement; }
+          while (p && p !== el) {
+            depth++;
+            p = p.parentElement;
+          }
           if (depth > bestDepth) {
             bestDepth = depth;
             best = input;
@@ -124,9 +140,9 @@ class ChatDomSniffer {
     }
 
     // Fallback
-    const groupEl = document.querySelector('[data-group-id]');
-    const gid = groupEl?.getAttribute('data-group-id');
-    if (gid?.startsWith('space/')) return gid.slice('space/'.length);
+    const groupEl = document.querySelector("[data-group-id]");
+    const gid = groupEl?.getAttribute("data-group-id");
+    if (gid?.startsWith("space/")) return gid.slice("space/".length);
 
     return null;
   }
@@ -146,7 +162,9 @@ class ChatDomSniffer {
     if (inputEl) {
       const panel = inputEl.closest('[data-is-detailed-thread-view="true"]');
       if (panel) {
-        const tid = panel.getAttribute('data-topic-id') || panel.getAttribute('data-local-topic-id');
+        const tid =
+          panel.getAttribute("data-topic-id") ||
+          panel.getAttribute("data-local-topic-id");
         if (tid) return tid;
       }
     }
