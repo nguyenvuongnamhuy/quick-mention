@@ -11,4 +11,3 @@ build
 *.zip
 
 .DS_Store
-config.js
